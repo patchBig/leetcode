@@ -22,14 +22,26 @@
  * @param {number} target
  * @return {number[]}
  */
+// var twoSum = function(nums, target) {
+//     for (let i = 0, j = nums.length; i < j; i++) {
+//         for(let k = i + 1; k < j; k++ ) {
+//             if (nums[i] + nums[k] === target) {
+//                 return [i, k]
+//             }
+//         }
+//     }
+// };
+
 var twoSum = function(nums, target) {
-    for (let i = 0, j = nums.length; i < j; i++) {
-        for(let k = i + 1; k < j; k++ ) {
-            if (nums[i] + nums[k] === target) {
-                return [i, k]
-            }
+    let map = new Map();
+    for(let i = 0, j = nums.length; i < j; i++) {
+        let remain = target- nums[i];
+        if (map.has(remain)) {
+            return [i, map.get(remain)]
         }
+        map.set(nums[i], i)
     }
-};
+}
+
 console.log(twoSum([2, 7, 11, 15], 9))
 //leetcode submit region end(Prohibit modification and deletion)
